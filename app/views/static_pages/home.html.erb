@@ -1,5 +1,13 @@
-<% provide(:title, "Home") %>
-<h1>Home</h1>
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-</p>
+<% provide(:heading, "Home") %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:heading) %></title>
+  </head>
+  <body>
+    <h1>Welcome</h1>
+    <p>
+      Pretend to buy stuff. It's fun.
+    </p>
+  </body>
+</html>
