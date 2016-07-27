@@ -33,8 +33,17 @@
                     <%= link_to "Login", login_path %>
                 </li>
                 <% end %>
-
             </ul>
+
+            <% if logged_in? %>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="<%= btn_active('/logout') %>">
+                <%= link_to "Log out", logout_path, method: "delete" %>
+              </li>
+            </ul>
+            <% end %>
+
+
 
             <!-- <form class="navbar-form navbar-right">
                 <div class="form-group">
