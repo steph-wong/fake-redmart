@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user,        only:   [:show, :edit, :update, :destroy]
+  before_action :require_login,   only:   [:show, :edit, :update, :destroy]
+  before_action :correct_user,    only:   [:edit, :update, :destroy]
+  before_action :require_logout,  only:   [:new]
 
   # GET /users
   # GET /users.json
@@ -71,4 +74,28 @@ class UsersController < ApplicationController
     def permitted_user_params
       params.require(:user).permit(:name, :email, :address, :password, :password_confirmation)
     end
+
+    def require_login
+      unless logged_in?
+        flash[:danger] = "You must be logged in to access this section."
+        redirect_to root_url
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+
+      unless current_user?(@user)
+        flash[:warning] = "You are not allowed to enter other people's page."
+        redirect_to root_url # add option to login again
+      end
+    end
+
+    def require_logout
+      if logged_in?
+        flash[:warning] = "You must be logged out to create a new user."
+        redirect_to root_url
+    end
+  end
+
 end
