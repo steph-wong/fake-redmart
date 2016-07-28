@@ -1,24 +1,44 @@
+<% provide(:title, @user.name) %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<div class="row">
+  <aside class="col-md-5">
+    <section class="user_info">
+      <h1>
+        <%= @user.name %>
+      </h1>
+    </section>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @user.name %>
+    </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %>
+    </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
+    <p>
+      <strong>Address:</strong>
+      <%= @user.address %>
+    </p>
 
+    <p>
+      <strong>Password:</strong>
+      <%= link_to 'Click to change', edit_user_path(@user) %>
+    </p>
+    <%= link_to 'Edit', edit_user_path(@user) %>
+  </aside>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
+  <div class="col-md-7">
+    <% if @user.reviews.any? %>
+      <h3>Reviews (<%= @user.reviews.count %>)</h3>
+      <ol class="reviews">
+        <%= render @reviews %>
+      </ol>
+      <%= will_paginate @reviews %>
+    <% end %>
+  </div>
+
+</div>

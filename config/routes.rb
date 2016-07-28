@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   get  '/product',   to: 'products#index'
 
 
-  resources :users, except: [ :new ]
+  resources :users,       except: [ :new ]
   resources :products
+  resources :microposts,  only: [:create, :destroy]
 
 end
