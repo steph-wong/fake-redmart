@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user,        only:   [:show, :edit, :update, :destroy]
-  before_action :require_login,   only:   [:show, :edit, :update, :destroy]
-  before_action :correct_user,    only:   [:edit, :update, :destroy]
+  before_action :require_login,   only:   [:edit, :update, :destroy]
+  before_action :correct_user,    only:   [:show, :edit, :update, :destroy]
   before_action :require_logout,  only:   [:new]
 
   # GET /users
@@ -77,6 +77,7 @@ class UsersController < ApplicationController
 
     def require_login
       unless logged_in?
+        store_location
         flash[:danger] = "You must be logged in to access this section."
         redirect_to root_url
       end
@@ -94,7 +95,7 @@ class UsersController < ApplicationController
     def require_logout
       if logged_in?
         flash[:warning] = "You must be logged out to create a new user."
-        redirect_to root_url
+        redirect_back fallback_location: current_user
     end
   end
 
