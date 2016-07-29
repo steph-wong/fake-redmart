@@ -31,3 +31,20 @@
 <br>
 
 <%= link_to 'New Product', new_product_path %>
+
+
+
+    <% if logged_in? %>
+      <div class="row">
+        <aside class="col-md-4">
+          <section class="user_info">
+            <%= render 'current_user' %>
+          </section>
+          <section class="review_form">
+            <%= render 'review_form' %>
+          </section>
+        </aside>
+      </div>
+      <% else %>
+        <p>Login to post reviews</p>
+    <% end %>
