@@ -1,5 +1,12 @@
 class ReviewsController < ApplicationController
-  before_action :require_login, only: [:create, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+
+  def new
+    @review = Review.new
+  end
+
+  def show
+  end
 
   def create
     @review = current_user.reviews.build(review_params)
@@ -15,6 +22,10 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+    def set_review
+      @review = Review.find(params[:id])
+    end
 
     def review_params
       params.require(:review).permit(:content)

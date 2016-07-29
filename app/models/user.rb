@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :reviews
+
   before_save { email.downcase! }
 
   # VALIDATION

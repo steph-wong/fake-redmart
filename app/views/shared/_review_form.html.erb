@@ -1,0 +1,8 @@
+<%= form_for(review) do |f| %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Add new review" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Post", class: "btn btn-primary" %>
+  </div>
+<% end %>

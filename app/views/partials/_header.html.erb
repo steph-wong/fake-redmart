@@ -22,12 +22,12 @@
                 </li>
                 <% if logged_in? %>
                 <li class="<%= btn_active('/product') %>">
-                    <%= link_to "Products", product_path %>
+                    <%= link_to "Products", products_path %>
                 </li>
 
             <% else %>
                 <li class="<%= btn_active('/register') %>">
-                    <%= link_to "Register", register_path %>
+                    <%= link_to "Register", registers_path %>
                 </li>
                 <% end %>
             </ul>

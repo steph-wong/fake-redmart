@@ -17,12 +17,12 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.brand_id %></td>
-        <td><%= product.category_id %></td>
+        <td><%= product.brand %></td>
+        <td><%= product.category %></td>
         <td><%= product.price %></td>
         <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Review', review_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,20 +31,3 @@
 <br>
 
 <%= link_to 'New Product', new_product_path %>
-
-
-
-    <% if logged_in? %>
-      <div class="row">
-        <aside class="col-md-4">
-          <section class="user_info">
-            <%= render 'current_user' %>
-          </section>
-          <section class="review_form">
-            <%= render 'review_form' %>
-          </section>
-        </aside>
-      </div>
-      <% else %>
-        <p>Login to post reviews</p>
-    <% end %>

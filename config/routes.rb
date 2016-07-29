@@ -11,11 +11,8 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  get  '/product',   to: 'products#index'
-
-
-  resources :users,       except: [ :new ]
+  resources :users,      except: [ :new ]
   resources :products
-  resources :microposts,  only: [:create, :destroy]
+  resources :reviews,    only: [:create, :destroy]
 
 end
