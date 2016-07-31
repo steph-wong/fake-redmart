@@ -6,14 +6,20 @@
   </head>
   <body>
 
+  <% if logged_in? %>
     <h1>Welcome</h1>
     <p>
       Pretend to buy stuff. It's fun.
     </p>
-
+  <% else %>
+    <h1>Welcome</h1>
+    <p>
+      Pretend to buy stuff. It's fun.
+    </p>
+    <br>
     <p>Welcome back. <%= link_to "Sign in here.", login_path %></p>
-
     <p>New here? <%= link_to "Sign up now!", register_path %></p>
+  <% end %>
 
   </body>
 </html>

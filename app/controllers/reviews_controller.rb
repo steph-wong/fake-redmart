@@ -12,7 +12,10 @@ class ReviewsController < ApplicationController
 
 
   def create
-    @review = current_user.reviews.build(permitted_review_params)
+    @product = Product.find()
+    @review = @product.reviews.build(permitted_review_params)
+    current_user.review << @review
+    @review.save
 
     respond_to do |format|
       if @review.save
