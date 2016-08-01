@@ -5,14 +5,19 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @review = Review.new
+    @product = Product.find(params[:product_id])
+    @review = Review.new(:product_id => params[:id])
   end
 
   def create
-    @product = Products.find(params[:product_id])
-    @review = @product.reviews.build(permitted_review_params)
-    current_user.reviews << @review
+    # @product = Products.find(params[:product_id])
+    # @review = @product.reviews.build(permitted_review_params)
+    # current_user.reviews << @review
+    # @review.save
 
+    @product = Product.find(params[:product_id])
+    @review = @product.reviews.build(permitted_review_params)
+    @review.user = current_user
     @review.save
 
       if @review.save
