@@ -1,20 +1,5 @@
-<% provide(:title, "Review") %>
+<h1>Review</h1>
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= yield(:title) %> | </title>
-  </head>
-  <body>
-    <h1>Review</h1>
+<%= render 'form', review: @review %>
 
-    <div class="row">
-      <aside class="col-md-5">
-        <section class="review_form">
-          <%= render 'shared/review_form', review: Review.new %>
-        </section>
-      </aside>
-    </div>
-
-  </body>
-</html>
+<%= link_to 'Back', products_path %>

@@ -1,24 +1,30 @@
-<%= form_for(@review) do |f| %>
+<%= form_for(review) do |f| %>
 
-  <%= render 'shared/error_messages', object: @user %>
+<% if review.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-    <% if user.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(user.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-        <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
+    <ul>
+    <% review.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
     <% end %>
+    </ul>
+  </div>
+<% end %>
 
-    <div class="field">
-      <%= f.text_area :content, placeholder: "Add new review" %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Post", class: "btn btn-primary" %>
-    </div>
+<div class="row">
+    <aside class="col-md-5">
+        <section class="user_info">
 
+            <div class="field">
+                <%= f.text_area :content, placeholder: "Add new review" %>
+                <%= f.hidden_field :product_id, :value => @product_id %>
+            </div>
+            <div class="actions">
+                <%= f.submit "Post", class: "btn btn-primary" %>
+            </div>
+
+        </section>
+    </aside>
+</div>
 <% end %>

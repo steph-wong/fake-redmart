@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
 
-
   def show
     @review = Review.find(params[:id])
   end
@@ -10,8 +9,10 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = current_user.reviews.build(permitted_review_params)
-    # @product.review << @review
+    @product = Products.find(params[:product_id])
+    @review = @product.reviews.build(permitted_review_params)
+    current_user.reviews << @review
+
     @review.save
 
       if @review.save
@@ -22,7 +23,6 @@ class ReviewsController < ApplicationController
         redirect_to products_url
       end
     end
-
 
   def destroy
   end

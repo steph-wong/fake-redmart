@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  get    '/post',   to: 'static_pages#review'
-
   resources :users,      except: [:new]
   resources :products
   resources :reviews
+
+  resources :products do
+    resources :reviews
+  end
 
 end
