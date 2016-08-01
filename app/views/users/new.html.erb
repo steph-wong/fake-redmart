@@ -1,6 +1,7 @@
 <h1>New User</h1>
 
 <%#= render 'form', user: @user %>
+<%= form_for(@user) do |f| %>
 
   <div class="field">
     <%= f.label :name %>
@@ -33,4 +34,4 @@
 <% end %>
 
 
-<%= link_to 'Back', current_user %>
+<%= link_to 'Back', root_path %>
