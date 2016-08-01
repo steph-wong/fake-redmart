@@ -21,7 +21,7 @@
         <td><%= product.category %></td>
         <td>$<%= product.price %></td>
         <td><%= link_to 'Show Details', product %> |
-            <%= link_to 'Review Product', reviews_path, method: :post %> |
+            <%= link_to 'Review Product', new_review_path %> |
             <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
       </tr>
     <% end %>

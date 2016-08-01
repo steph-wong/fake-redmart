@@ -1,41 +1,33 @@
 class ReviewsController < ApplicationController
-  before_action :set_product, only: [:show, :create, :destroy]
 
-  # def new
-  #   @review = Review.new
-  # end
 
   def show
     @review = Review.find(params[:id])
   end
 
-
+  def new
+    @review = Review.new
+  end
 
   def create
-    @product = Product.find()
-    @review = @product.reviews.build(permitted_review_params)
-    current_user.review << @review
+    @review = current_user.reviews.build(permitted_review_params)
+    # @product.review << @review
     @review.save
 
-    respond_to do |format|
       if @review.save
         flash[:success] = "Review posted."
-        redirect_to root_url
+        redirect_to products_url
       else
-        render '/home'
+        flash[:danger] = "Review error."
+        redirect_to products_url
       end
     end
-  end
 
 
   def destroy
   end
 
   private
-
-    def set_review
-      @review = Review.find(params[:id])
-    end
 
     def permitted_review_params
       params.require(:review).permit(:content)

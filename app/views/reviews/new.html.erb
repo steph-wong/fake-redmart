@@ -1,0 +1,20 @@
+<% provide(:title, "Review") %>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) %> | </title>
+  </head>
+  <body>
+    <h1>Review</h1>
+
+    <div class="row">
+      <aside class="col-md-5">
+        <section class="review_form">
+          <%= render 'shared/review_form', review: Review.new %>
+        </section>
+      </aside>
+    </div>
+
+  </body>
+</html>
