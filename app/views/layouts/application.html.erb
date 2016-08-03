@@ -12,12 +12,6 @@
         <%= render 'partials/header' %>
         <div class="container">
 
-            <% flash.each do |message_type, message| %>
-            <div class="alert alert-<%= message_type %>">
-                <%= message %>
-            </div>
-            <% end %>
-
             <div class="jumbotron">
                 <p>
                     <%= yield %>
@@ -25,7 +19,7 @@
             </div>
 
         <%= render 'partials/footer' %>
-        
+
       </div>
 
     </body>
