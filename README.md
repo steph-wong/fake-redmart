@@ -1,24 +1,24 @@
-# README
+# Fake Redmart
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fake Redmart is a minimalistic replica of e-commerce website Redmart (https://redmart.com/), created as an exercise in RoR.
 
-Things you may want to cover:
+### Approach Taken
 
-* Ruby version
+The app includes three basic models - user, product and review - and is not designed to be commercially functional nor aesthetically pleasing. The primary focus was on establishing relationships between models.
 
-* System dependencies
+App is deployed on: https://mysterious-castle-51227.herokuapp.com/
 
-* Configuration
+### Tech Used
 
-* Database creation
+- Bootstrap
 
-* Database initialization
+### Unsolved Problems
 
-* How to run the test suite
+- Prices do not appear in two decimal places
+- Unable to tie product name to user reviews on show user page
 
-* Services (job queues, cache servers, search engines, etc.)
+### Next Steps
 
-* Deployment instructions
-
-* ...
+- Create admin users; and limit access to edit products to admin
+- Include images for products
+- Build shopping cart
